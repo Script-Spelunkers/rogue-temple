@@ -1,7 +1,7 @@
 #include "gameengine.h"
 #include "gamestate.h"
 
-void GameEngine::Start(sf::RenderWindow& window, int width, int height,
+void GameEngine::Start(const char* title, int width, int height,
 	bool fullscreen) {
 	
 	int screen_style;
@@ -16,7 +16,7 @@ void GameEngine::Start(sf::RenderWindow& window, int width, int height,
 	m_fullscreen = fullscreen;
 	m_running = true;
 
-	m_window = &window;
+	m_window = new sf::RenderWindow(sf::VideoMode(width, height), title);
 
 	printf("GameEngine initialized.\n");
 

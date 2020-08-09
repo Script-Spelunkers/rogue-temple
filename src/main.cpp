@@ -7,8 +7,7 @@
 int main()
 {
     GameEngine engine;
-    sf::RenderWindow window(sf::VideoMode(640, 480), "test");
-    engine.Start(window);
+    engine.Start( "GameEngine Pre-Alpha v1.0" );
 
     engine.ChangeState(PlayingState::GetInstance());
 

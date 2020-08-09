@@ -9,7 +9,7 @@ class GameState;
 
 class GameEngine {
 public:
-	void Start(sf::RenderWindow& window, int width = 640, int height = 480,
+	void Start(const char* title, int width = 640, int height = 480,
 		       bool fullscreen = false);
 	void Cleanup();
 
