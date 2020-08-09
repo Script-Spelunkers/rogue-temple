@@ -9,7 +9,7 @@ class GameState;
 
 class GameEngine {
 public:
-	void Start(const char* title, int width = 640, int height = 480,
+	void Start(sf::RenderWindow& window, int width = 640, int height = 480,
 		       bool fullscreen = false);
 	void Cleanup();
 
@@ -24,7 +24,7 @@ public:
 	bool Running() { return m_running; }
 	void Quit() { m_running = false; }
 
-	sf::RenderWindow* window;
+	sf::RenderWindow* m_window;
 
 private:
 	// our state stack
