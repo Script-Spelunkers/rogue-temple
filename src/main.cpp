@@ -19,5 +19,7 @@ int main()
         engine.Draw();
     }
 
+    engine.Cleanup();
+
     return 0;
 }

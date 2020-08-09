@@ -23,7 +23,7 @@ void PlayingState::HandleEvents(GameEngine* engine) {
 	sf::Event event;
 	if (engine->m_window->pollEvent(event)) {
 		if (event.type == sf::Event::Closed) {
-			engine->m_window->close();
+			engine->Quit();
 		}
 	}
 }
