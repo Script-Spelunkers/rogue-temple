@@ -32,6 +32,7 @@ void GameEngine::Cleanup() {
 
 	// destroy our window
 	m_window->close();
+	delete m_window;
 
 }
 
