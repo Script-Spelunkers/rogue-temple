@@ -1,9 +1,18 @@
 #pragma once
 
+#include <SFML/Graphics.hpp>
 #include "gamestate.h"
+#include "boundingbox.h"
+#include "aabbintersector.h"
+#include <vector>
+
 
 class PlayingState : public GameState {
 public:
+
+	//TODO REMOVE: 
+	int draws_called = 0;
+
 	virtual void Start();
 	virtual void Cleanup();
 
