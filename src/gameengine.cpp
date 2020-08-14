@@ -13,7 +13,7 @@ void GameEngine::start(const char* title, int width, int height,
 		screen_style = sf::Style::Default;
 	}
 
-	m_fullscreen = fullscreen;
+	_full_screen = fullscreen;
 	_running = true;
 
 	_window = new sf::RenderWindow(sf::VideoMode(width, height), title);
