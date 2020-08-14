@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <SFML/Graphics/RectangleShape.hpp>
 #include "boundingbox.h"
 
 using namespace std;
@@ -15,7 +16,7 @@ class aabbIntersector{
 
     //
     public:
-        bool check_aabb_intersection(aabb_bounding_box *A, aabb_bounding_box *B);
+        bool check_aabb_intersection(sf::RectangleShape &A, sf::RectangleShape &B);
 
 
 };
