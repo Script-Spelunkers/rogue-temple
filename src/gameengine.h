@@ -9,27 +9,27 @@ class GameState;
 
 class GameEngine {
 public:
-	void Start(const char* title, int width = 640, int height = 480,
+	void start(const char* title, int width = 640, int height = 480,
 		       bool fullscreen = false);
-	void Cleanup();
+	void cleanup();
 
-	void ChangeState(GameState* state);
+	void changeState(GameState* state);
 	void PushState(GameState* state);
 	void PopState();
 
-	void HandleEvents();
-	void Update();
-	void Draw();
+	void handleEvents();
+	void update();
+	void draw();
 
-	bool Running() { return m_running; }
-	void Quit() { m_running = false; }
+	bool Running() { return _running; }
+	void Quit() { _running = false; }
 
-	sf::RenderWindow* m_window;
+	sf::RenderWindow* _window;
 
 private:
 	// our state stack
 	vector<GameState*> states;
 
-	bool m_running;
+	bool _running;
 	bool m_fullscreen;
 };

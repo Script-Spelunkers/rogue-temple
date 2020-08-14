@@ -1,43 +1,43 @@
 #include "gameengine.h"
 #include "playingstate.h"
 
-PlayingState PlayingState::m_PlayingState;
+PlayingState PlayingState::_playing_state;
 
-void PlayingState::Start() {
-	printf("PlayingState Start");
+void PlayingState::start() {
+	printf("PlayingState start");
 }
 
-void PlayingState::Cleanup() {
-	printf("PlayingState Cleanup");
+void PlayingState::cleanup() {
+	printf("PlayingState cleanup");
 }
 
-void PlayingState::Pause() {
-	printf("PlayingState Pause");
+void PlayingState::pause() {
+	printf("PlayingState pause");
 }
 
-void PlayingState::Resume() {
-	printf("PlayingState Resume");
+void PlayingState::resume() {
+	printf("PlayingState resume");
 }
 
-void PlayingState::HandleEvents(GameEngine* engine) {
+void PlayingState::handleEvents(GameEngine* engine) {
 	sf::Event event;
-	if (engine->m_window->pollEvent(event)) {
+	if (engine->_window->pollEvent(event)) {
 		if (event.type == sf::Event::Closed) {
 			engine->Quit();
 		}
 	}
 }
 
-void PlayingState::Update(GameEngine* engine) {
+void PlayingState::update(GameEngine* engine) {
 
 }
 
-void PlayingState::Draw(GameEngine* engine) {
+void PlayingState::draw(GameEngine* engine) {
 
 	sf::CircleShape shape(100.f);
 	shape.setFillColor(sf::Color::Green);
 
-	engine->m_window->clear();
-	engine->m_window->draw(shape);
-	engine->m_window->display();
+	engine->_window->clear();
+	engine->_window->draw(shape);
+	engine->_window->display();
 }
