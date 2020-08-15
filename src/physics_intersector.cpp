@@ -1,11 +1,11 @@
-#include "aabbintersector.h"
+#include "physics_intersector.h"
 #include <iostream>
 
 
 //Intersection between aabb:
 //Requires Four Checks:
 //Compiler will likely optimize code, set up so I can better debug any conditions if necessary: 
-bool aabbIntersector::check_aabb_intersection(sf::RectangleShape &A, sf::RectangleShape &B){
+bool physics_intersector::check_aabb_intersection(sf::RectangleShape &A, sf::RectangleShape &B){
 
         float ax1 = A.getPosition().x;
         float ay1 = A.getPosition().y;

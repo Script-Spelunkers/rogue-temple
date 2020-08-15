@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include <SFML/Graphics/RectangleShape.hpp>
-#include "boundingbox.h"
 
 using namespace std;
 
@@ -12,7 +11,7 @@ using namespace std;
 // This can occur for complex entities, and entities with projectile weapons:
 // As game gets fleshed out, so do the underlying properties:
 //
-class aabbIntersector{
+class physics_intersector{
 
     //
     public:
