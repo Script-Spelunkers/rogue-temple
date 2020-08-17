@@ -7,26 +7,22 @@
 
 class PlayingState : public GameState {
 public:
+	virtual void start();
+	virtual void cleanup();
 
-	//TODO REMOVE: 
-	int draws_called = 0;
+	virtual void pause();
+	virtual void resume();
 
-	virtual void Start();
-	virtual void Cleanup();
-
-	virtual void Pause();
-	virtual void Resume();
-
-	virtual void HandleEvents(GameEngine* engine);
-	virtual void Update(GameEngine* engine);
-	virtual void Draw(GameEngine* engine);
+	virtual void handleEvents(GameEngine* engine);
+	virtual void update(GameEngine* engine);
+	virtual void draw(GameEngine* engine);
 
 	// method to get our singleton
 	static PlayingState* GetInstance() {
-		return &m_PlayingState;
+		return &_playing_state;
 	}
 
 private:
 	PlayingState() { };
-	static PlayingState m_PlayingState;
+	static PlayingState _playing_state;
 };

@@ -8,18 +8,18 @@
 int main()
 {
     GameEngine engine;
-    engine.Start( "GameEngine Pre-Alpha v1.0" );
+    engine.start( "GameEngine Pre-Alpha v1.0" );
 
-    engine.ChangeState(PlayingState::GetInstance());
+    engine.changeState(PlayingState::GetInstance());
 
     while (engine.Running())
     {
-        engine.HandleEvents();
-        engine.Update();
-        engine.Draw();
+        engine.handleEvents();
+        engine.update();
+        engine.draw();
     }
 
-    engine.Cleanup();
+    engine.cleanup();
 
     return 0;
 }

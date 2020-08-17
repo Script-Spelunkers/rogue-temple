@@ -1,7 +1,7 @@
 #include "gameengine.h"
 #include "gamestate.h"
 
-void GameEngine::Start(const char* title, int width, int height,
+void GameEngine::start(const char* title, int width, int height,
 	bool fullscreen) {
 	
 	int screen_style;
@@ -13,51 +13,52 @@ void GameEngine::Start(const char* title, int width, int height,
 		screen_style = sf::Style::Default;
 	}
 
-	m_fullscreen = fullscreen;
-	m_running = true;
+	_full_screen = fullscreen;
+	_running = true;
 
-	m_window = new sf::RenderWindow(sf::VideoMode(width, height), title);
+	_window = new sf::RenderWindow(sf::VideoMode(width, height), title);
 
 	printf("GameEngine initialized.\n");
 
 }
 
-void GameEngine::Cleanup() {
+void GameEngine::cleanup() {
 
 	// cleanup state stack
 	while (!states.empty()) {
-		states.back()->Cleanup();
+		states.back()->cleanup();
 		states.pop_back();
 	}
 
 	// destroy our window
-	m_window->close();
+	_window->close();
+	delete _window;
 
 }
 
-void GameEngine::ChangeState(GameState* state) {
+void GameEngine::changeState(GameState* state) {
 
 	// clean and remove current state from stack
 	if (!states.empty()) {
-		states.back()->Cleanup();
+		states.back()->cleanup();
 		states.pop_back();
 	}
 
-	// store and Start new state
+	// store and start new state
 	states.push_back(state);
-	states.back()->Start();
+	states.back()->start();
 }
 
 void GameEngine::PushState(GameState* state) {
 	
 	// pause current state
 	if (!states.empty()) {
-		states.back()->Pause();
+		states.back()->pause();
 	}
 
-	// add new state to stack and Start it
+	// add new state to stack and start it
 	states.push_back(state);
-	states.back()->Start();
+	states.back()->start();
 
 }
 
@@ -65,28 +66,28 @@ void GameEngine::PopState() {
 
 	// clean and remove current state from stack
 	if (!states.empty()) {
-		states.back()->Cleanup();
+		states.back()->cleanup();
 		states.pop_back();
 	}
 
 	// resume previous state
 	if (!states.empty()) {
-		states.back()->Resume();
+		states.back()->resume();
 	}
 }
 
-void GameEngine::HandleEvents() {
+void GameEngine::handleEvents() {
 
 	// delegate event handling to the state
-	states.back()->HandleEvents(this);
+	states.back()->handleEvents(this);
 }
 
-void GameEngine::Update() {
+void GameEngine::update() {
 	// delegate updating to the state
-	states.back()->Update(this);
+	states.back()->update(this);
 }
 
-void GameEngine::Draw() {
+void GameEngine::draw() {
 	// delgate drawing to the state
-	states.back()->Draw(this);
+	states.back()->draw(this);
 }

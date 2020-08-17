@@ -13,51 +13,34 @@ bool intersecting = false;
 physics_intersector intersector_tester;
 //****************************************************************************************
 
-PlayingState PlayingState::m_PlayingState;
+PlayingState PlayingState::_playing_state;
 
-void PlayingState::Start() {
-	printf("PlayingState Start");
-
-	//Set Origins:
-	bb1.setOrigin(50.0f, 50.0f);
-	bb2.setOrigin(50.0f, 50.0f);
-
-
-	//Set Initial Fill Color: 
-	bb1.setFillColor(sf::Color::White);
-	bb2.setFillColor(sf::Color::Blue);
-
-	//Set init position:
-	bb1.setPosition(100.0f, 0.0f);
-	bb2.setPosition(95.0f, 250.0f);
-
-	bb1.setRotation(37.0f);
-	bb2.setRotation(87.0f);
-
+void PlayingState::start() {
+	printf("PlayingState start");
 }
 
-void PlayingState::Cleanup() {
-	printf("PlayingState Cleanup");
+void PlayingState::cleanup() {
+	printf("PlayingState cleanup");
 }
 
-void PlayingState::Pause() {
-	printf("PlayingState Pause");
+void PlayingState::pause() {
+	printf("PlayingState pause");
 }
 
-void PlayingState::Resume() {
-	printf("PlayingState Resume");
+void PlayingState::resume() {
+	printf("PlayingState resume");
 }
 
-void PlayingState::HandleEvents(GameEngine* engine) {
+void PlayingState::handleEvents(GameEngine* engine) {
 	sf::Event event;
 	if (engine->m_window->pollEvent(event)) {
-	if (event.type == sf::Event::Closed) {
+		if (event.type == sf::Event::Closed) {
 			engine->Quit();
 		}
 	}
 }
 
-void PlayingState::Update(GameEngine* engine) {
+void PlayingState::update(GameEngine* engine) {
 
 
 	//prevents weird transform memery: will figure out later ;)
@@ -88,15 +71,13 @@ void PlayingState::Update(GameEngine* engine) {
 	
 }
 
-void PlayingState::Draw(GameEngine* engine) {
+void PlayingState::draw(GameEngine* engine) {
 
 	this->draws_called++;
 	printf("Draw Call Num: %d\n", this->draws_called);
 	printf("***************\n");
 
-	engine->m_window->clear();
-	engine->m_window->draw(bb1);
-	engine->m_window->draw(bb2);
-
-	engine->m_window->display();
+	engine->_window->clear();
+	engine->_window->draw(shape);
+	engine->_window->display();
 }
