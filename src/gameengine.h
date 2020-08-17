@@ -31,5 +31,5 @@ private:
 	vector<GameState*> states;
 
 	bool _running;
-	bool m_fullscreen;
+	bool _full_screen;
 };
