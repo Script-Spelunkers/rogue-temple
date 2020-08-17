@@ -2,8 +2,6 @@
 
 #include <SFML/Graphics.hpp>
 #include "gamestate.h"
-#include "boundingbox.h"
-#include "aabbintersector.h"
 #include <vector>
 
 
