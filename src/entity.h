@@ -2,8 +2,8 @@
 
 #include "SFML/Graphics.hpp"
 
-class Entity {
-    virtual void draw() = 0;
+class Entity : sf::Drawable {
+    virtual void draw(sf::RenderTarget target, sf::RenderStates states) = 0;
     virtual void update() = 0;
     int getEntityId() const { return _entity_id ;};
 
