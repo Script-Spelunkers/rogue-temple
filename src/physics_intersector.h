@@ -5,40 +5,24 @@
 
 using namespace std;
 
-
 // Class is designed to test intersections between bounding boxes:
 // Other notes: Note that a single entity may have more then 1 bounding box:
 // This can occur for complex entities, and entities with projectile weapons:
 // As game gets fleshed out, so do the underlying properties:
-//
-class physics_intersector{
+class PhysicsIntersector{
 
-    //
     public:
-        bool check_rect_rect_intersection(sf::RectangleShape &A, sf::RectangleShape &B); 
-
-    private:
-        bool check_AABB_intersection_rects(sf::RectangleShape &A, sf::RectangleShape &B);
-        bool check_SAT_intersection_rects(sf::RectangleShape &A, sf::RectangleShape &B);
-
-
-};
-
-
-
-//Helper Structs for AD: 
-//
-struct vec2d{
-		
-        float x;
-		float y;
-	
+        bool checkRectangleIntersection(sf::RectangleShape &rectangle_a, sf::RectangleShape &rectangle_b); 
     
+    private:
+        bool checkAABBIntersection(sf::RectangleShape &rectangle_a, sf::RectangleShape &rectangle_b);
+        bool checkADIntersection(sf::RectangleShape &rectangle_a, sf::RectangleShape &rectangle_b);
 };
 
-//Helper Polygon Struct
-struct polygon{
-		std::vector<vec2d> p;	// Vertexes:
-		vec2d pos;				// Center of Shape:					
-	};
-
+// Rectangle Struct for AD:
+// If AD gets refactored out we can remove this: 
+struct RectangleHelper{
+		std::vector<sf::Vector2<float>> p; // Vertexes:
+		sf::Vector2<float> pos;			   // Center of Shape:					
+	
+};
