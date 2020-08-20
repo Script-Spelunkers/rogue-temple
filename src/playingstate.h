@@ -1,6 +1,9 @@
 #pragma once
 
+#include <SFML/Graphics.hpp>
 #include "gamestate.h"
+#include <vector>
+
 
 class PlayingState : public GameState {
 public:

@@ -1,5 +1,7 @@
 #include "gameengine.h"
 #include "playingstate.h"
+#include "physics_intersector.h"
+#include <iostream>
 
 PlayingState PlayingState::_playing_state;
 
@@ -30,14 +32,11 @@ void PlayingState::handleEvents(GameEngine* engine) {
 
 void PlayingState::update(GameEngine* engine) {
 
-}
+}	
 
 void PlayingState::draw(GameEngine* engine) {
 
-	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Green);
-
 	engine->_window->clear();
-	engine->_window->draw(shape);
 	engine->_window->display();
+
 }
