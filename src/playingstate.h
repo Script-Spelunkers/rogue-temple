@@ -1,6 +1,7 @@
 #pragma once
 
 #include "gamestate.h"
+#include "entity.h"
 
 class PlayingState : public GameState {
 public:
@@ -22,4 +23,5 @@ public:
 private:
 	PlayingState() { };
 	static PlayingState _playing_state;
+	vector<Entity*> _entity_container;
 };

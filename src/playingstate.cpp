@@ -1,10 +1,14 @@
 #include "gameengine.h"
 #include "playingstate.h"
+#include "player.h"
 
 PlayingState PlayingState::_playing_state;
 
+sf::Texture texture; // figure out where this should live
 void PlayingState::start() {
-	printf("PlayingState start");
+
+    auto *player = new Player;
+    _entity_container.push_back(player);
 }
 
 void PlayingState::cleanup() {
@@ -34,10 +38,9 @@ void PlayingState::update(GameEngine* engine) {
 
 void PlayingState::draw(GameEngine* engine) {
 
-	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Green);
-
 	engine->_window->clear();
-	engine->_window->draw(shape);
+	for (Entity* entity : this->_entity_container) {
+        engine->_window->draw(*entity);
+    }
 	engine->_window->display();
 }

@@ -2,15 +2,17 @@
 
 #include "SFML/Graphics.hpp"
 
-class Entity : sf::Drawable {
-    virtual void draw(sf::RenderTarget target, sf::RenderStates states) = 0;
+class Entity : public sf::Drawable {
+public:
+    Entity() = default;
+    explicit Entity(sf::Sprite& sprite) : _sprite(sprite) {};
+    virtual void draw(sf::RenderTarget&, sf::RenderStates) const = 0;
     virtual void update() = 0;
-    int getEntityId() const { return _entity_id ;};
 
     // TODO virtual void handleInput(const inputData &input) {};
 
-private:
-    int _entity_id;
+protected:
+    sf::Texture _texture;
     sf::Sprite _sprite;
 
 };
