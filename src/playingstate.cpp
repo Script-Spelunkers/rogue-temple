@@ -1,6 +1,8 @@
 #include "gameengine.h"
 #include "playingstate.h"
 #include "player.h"
+#include "physics_intersector.h"
+#include <iostream>
 
 PlayingState PlayingState::_playing_state;
 
@@ -34,7 +36,7 @@ void PlayingState::handleEvents(GameEngine* engine) {
 
 void PlayingState::update(GameEngine* engine) {
 
-}
+}	
 
 void PlayingState::draw(GameEngine* engine) {
 
@@ -43,4 +45,5 @@ void PlayingState::draw(GameEngine* engine) {
         engine->_window->draw(*entity);
     }
 	engine->_window->display();
+
 }
