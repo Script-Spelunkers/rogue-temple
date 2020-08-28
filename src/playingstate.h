@@ -2,8 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 #include "gamestate.h"
+#include "entity.h"
 #include <vector>
-
 
 class PlayingState : public GameState {
 public:
@@ -25,4 +25,5 @@ public:
 private:
 	PlayingState() { };
 	static PlayingState _playing_state;
+	vector<Entity*> _entity_container;
 };

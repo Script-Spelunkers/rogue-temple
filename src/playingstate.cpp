@@ -1,12 +1,16 @@
 #include "gameengine.h"
 #include "playingstate.h"
+#include "player.h"
 #include "physics_intersector.h"
 #include <iostream>
 
 PlayingState PlayingState::_playing_state;
 
+sf::Texture texture; // figure out where this should live
 void PlayingState::start() {
-	printf("PlayingState start");
+
+    auto *player = new Player;
+    _entity_container.push_back(player);
 }
 
 void PlayingState::cleanup() {
@@ -37,6 +41,9 @@ void PlayingState::update(GameEngine* engine) {
 void PlayingState::draw(GameEngine* engine) {
 
 	engine->_window->clear();
+	for (Entity* entity : this->_entity_container) {
+        engine->_window->draw(*entity);
+    }
 	engine->_window->display();
 
 }
