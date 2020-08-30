@@ -1,11 +1,12 @@
 #include "player.h"
 
-Player::Player() {
+Player::Player(int x, int y) {
     _texture.loadFromFile("../assets/spritesheets/test.png");
     _sprite.setTexture(_texture);
-    _sprite.setTextureRect(sf::IntRect(10, 10, 256, 256));
-    _x = 0;
-    _y = 0;
+    _x = x;
+    _y = y;
+
+    this->_sprite.setPosition(_x, _y);
 }
 
 void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const {

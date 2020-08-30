@@ -7,5 +7,5 @@ class Player: public Entity {
 public:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
     void update() override;
-    Player();
+    Player(int x, int y);
 };
