@@ -22,7 +22,7 @@ class PhysicsIntersector{
 // Rectangle Struct for AD:
 // If AD gets refactored out we can remove this: 
 struct RectangleHelper{
-		std::vector<sf::Vector2<float>> p; // Vertexes:
-		sf::Vector2<float> pos;			   // Center of Shape:					
-	
+        std::vector<sf::Vector2<float>> p; // Vertexes:
+        sf::Vector2<float> pos;			   // Center of Shape:					
+    
 };

@@ -134,45 +134,45 @@ bool PhysicsIntersector::checkADIntersection(sf::RectangleShape &rectangle_a, sf
 
     //Struct pointers for AD: 
     //Determines which shape is currently being checked against the other: 
-	 RectangleHelper *rectangle_helper_ptr_a = &rectangle_helper_a;
-	 RectangleHelper *rectangle_helper_ptr_b = &rectangle_helper_b;
+     RectangleHelper *rectangle_helper_ptr_a = &rectangle_helper_a;
+     RectangleHelper *rectangle_helper_ptr_b = &rectangle_helper_b;
 
     // Start of the AD theorem: 
     // Thanks to javidx9 for describing the algo in depth: 
     for (int shape = 0; shape < 2; shape++){
-			
+            
         //Determines which shape is being tested against the edges:
         //Ptrs get swapped to test inverse.
         if (shape == 1){
-			rectangle_helper_ptr_a = &rectangle_helper_b;
-			rectangle_helper_ptr_b = &rectangle_helper_a;
-		
+            rectangle_helper_ptr_a = &rectangle_helper_b;
+            rectangle_helper_ptr_b = &rectangle_helper_a;
+        
         }
-			
-		//Grabs the center of the shape and an edge: Uses this to create a line to  test against the edge line of other:
-		for (int p = 0; p < rectangle_helper_ptr_a->p.size(); p++){
-	        
+            
+        //Grabs the center of the shape and an edge: Uses this to create a line to  test against the edge line of other:
+        for (int p = 0; p < rectangle_helper_ptr_a->p.size(); p++){
+            
             sf::Vector2<float> start_of_line_a = rectangle_helper_ptr_a->pos;
-			sf::Vector2<float> end_of_line_a = rectangle_helper_ptr_a->p[p];
+            sf::Vector2<float> end_of_line_a = rectangle_helper_ptr_a->p[p];
 
-			//Grabbing edges of other shape: 
-			for (int q = 0; q < rectangle_helper_ptr_b->p.size(); q++){
-				sf::Vector2<float> start_of_line_b = rectangle_helper_ptr_b->p[q];
-				sf::Vector2<float> end_of_line_b = rectangle_helper_ptr_b->p[(q + 1) % rectangle_helper_ptr_b->p.size()];
+            //Grabbing edges of other shape: 
+            for (int q = 0; q < rectangle_helper_ptr_b->p.size(); q++){
+                sf::Vector2<float> start_of_line_b = rectangle_helper_ptr_b->p[q];
+                sf::Vector2<float> end_of_line_b = rectangle_helper_ptr_b->p[(q + 1) % rectangle_helper_ptr_b->p.size()];
 
-				// Line Intersection Algo described by javidx9 in other documents: 
-				float h = (end_of_line_b.x - start_of_line_b.x) * (start_of_line_a.y - end_of_line_a.y) - (start_of_line_a.x - end_of_line_a.x) * (end_of_line_b.y - start_of_line_b.y);
-				float t1 = ((start_of_line_b.y - end_of_line_b.y) * (start_of_line_a.x - start_of_line_b.x) + (end_of_line_b.x - start_of_line_b.x) * (start_of_line_a.y - start_of_line_b.y)) / h;
-				float t2 = ((start_of_line_a.y - end_of_line_a.y) * (start_of_line_a.x - start_of_line_b.x) + (end_of_line_a.x - start_of_line_a.x) * (start_of_line_a.y - start_of_line_b.y)) / h;
+                // Line Intersection Algo described by javidx9 in other documents: 
+                float h = (end_of_line_b.x - start_of_line_b.x) * (start_of_line_a.y - end_of_line_a.y) - (start_of_line_a.x - end_of_line_a.x) * (end_of_line_b.y - start_of_line_b.y);
+                float t1 = ((start_of_line_b.y - end_of_line_b.y) * (start_of_line_a.x - start_of_line_b.x) + (end_of_line_b.x - start_of_line_b.x) * (start_of_line_a.y - start_of_line_b.y)) / h;
+                float t2 = ((start_of_line_a.y - end_of_line_a.y) * (start_of_line_a.x - start_of_line_b.x) + (end_of_line_a.x - start_of_line_a.x) * (start_of_line_a.y - start_of_line_b.y)) / h;
 
                 //If intersection, print out and let user know: 
-				if (t1 >= 0.0f && t1 < 1.0f && t2 >= 0.0f && t2 < 1.0f){
-						printf("Intersection Detected: Check Num: %d, %.2f, %.2f, %.2f\n", shape, h, t1, t2);
+                if (t1 >= 0.0f && t1 < 1.0f && t2 >= 0.0f && t2 < 1.0f){
+                        printf("Intersection Detected: Check Num: %d, %.2f, %.2f, %.2f\n", shape, h, t1, t2);
                         return true;
-				}
-				
+                }
+                
             }
-			    
+                
         }		
     }
 

@@ -14,24 +14,24 @@ void PlayingState::start() {
 }
 
 void PlayingState::cleanup() {
-	printf("PlayingState cleanup");
+    printf("PlayingState cleanup");
 }
 
 void PlayingState::pause() {
-	printf("PlayingState pause");
+    printf("PlayingState pause");
 }
 
 void PlayingState::resume() {
-	printf("PlayingState resume");
+    printf("PlayingState resume");
 }
 
 void PlayingState::handleEvents(GameEngine* engine) {
-	sf::Event event;
-	if (engine->_window->pollEvent(event)) {
-		if (event.type == sf::Event::Closed) {
-			engine->Quit();
-		}
-	}
+    sf::Event event;
+    if (engine->_window->pollEvent(event)) {
+        if (event.type == sf::Event::Closed) {
+            engine->Quit();
+        }
+    }
 }
 
 void PlayingState::update(GameEngine* engine) {
@@ -40,10 +40,10 @@ void PlayingState::update(GameEngine* engine) {
 
 void PlayingState::draw(GameEngine* engine) {
 
-	engine->_window->clear();
-	for (Entity* entity : this->_entity_container) {
+    engine->_window->clear();
+    for (Entity* entity : this->_entity_container) {
         engine->_window->draw(*entity);
     }
-	engine->_window->display();
+    engine->_window->display();
 
 }
