@@ -6,7 +6,6 @@
 
 PlayingState PlayingState::_playing_state;
 
-sf::Texture texture; // TODO: figure out where this should live
 void PlayingState::start() {
 
     auto *player = new Player{50, 50};

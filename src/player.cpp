@@ -1,8 +1,8 @@
 #include "player.h"
 
 Player::Player(int x, int y) {
-    _texture.loadFromFile("../assets/spritesheets/test.png");
-    _sprite.setTexture(_texture);
+    _texture = AssetManager::getInstance()->getTexture("test.png");
+    _sprite.setTexture(*_texture);
     _x = x;
     _y = y;
 
