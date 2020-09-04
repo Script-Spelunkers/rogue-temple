@@ -1,5 +1,6 @@
 #include "gameengine.h"
 #include "gamestate.h"
+#include "assetmanager.h"
 
 void GameEngine::start(const char* title, int width, int height,
     bool fullscreen) {
@@ -17,6 +18,7 @@ void GameEngine::start(const char* title, int width, int height,
     _running = true;
 
     _window = new sf::RenderWindow(sf::VideoMode(width, height), title);
+    _window->setFramerateLimit(60);
 
     printf("GameEngine initialized.\n");
 
@@ -29,6 +31,9 @@ void GameEngine::cleanup() {
         states.back()->cleanup();
         states.pop_back();
     }
+
+    // release our asset manager
+    AssetManager::getInstance()->release();
 
     // destroy our window
     _window->close();
